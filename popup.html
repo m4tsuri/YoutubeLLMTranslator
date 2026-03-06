@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>LLM Translator Settings</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      width: 250px;
+      padding: 16px;
+      margin: 0;
+      color: #333;
+    }
+    h3 {
+      margin-top: 0;
+      margin-bottom: 16px;
+      font-size: 16px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 8px;
+    }
+    .setting-group {
+      margin-bottom: 16px;
+    }
+    .setting-label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+    .radio-option {
+      display: flex;
+      align-items: center;
+      margin-bottom: 6px;
+      font-size: 13px;
+    }
+    .radio-option input {
+      margin-right: 8px;
+    }
+    .range-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    input[type=range] {
+      flex: 1;
+    }
+    #fontSizeValue {
+      font-size: 13px;
+      min-width: 30px;
+    }
+    .text-input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 6px;
+      font-size: 13px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 4px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <h3>LLM Settings</h3>
+  
+  <div class="setting-group">
+    <span class="setting-label">API URL</span>
+    <input type="text" id="apiUrl" class="text-input" placeholder="http://localhost:30000/v1/chat/completions">
+  </div>
+  
+  <div class="setting-group">
+    <span class="setting-label">API Key</span>
+    <input type="password" id="apiKey" class="text-input" placeholder="Optional (e.g. sk-...)">
+  </div>
+  
+  <div class="setting-group" style="border-bottom: 1px solid #eee; padding-bottom: 12px; margin-bottom: 16px;">
+    <span class="setting-label">Model Name</span>
+    <input type="text" id="modelName" class="text-input" placeholder="default">
+  </div>
+
+  <h3>Subtitle Settings</h3>
+  
+  <div class="setting-group">
+    <span class="setting-label">Operation Mode</span>
+    <label class="radio-option">
+      <input type="radio" name="mode" value="both">
+      Both (Live + Pause Analysis)
+    </label>
+    <label class="radio-option">
+      <input type="radio" name="mode" value="live_only">
+      Live Translation Only
+    </label>
+    <label class="radio-option">
+      <input type="radio" name="mode" value="pause_only" checked>
+      Pause Analysis Only
+    </label>
+  </div>
+
+  <div class="setting-group">
+    <span class="setting-label">Live Subtitle Font Size</span>
+    <div class="range-container">
+      <input type="range" id="fontSize" min="16" max="48" value="28">
+      <span id="fontSizeValue">28px</span>
+    </div>
+  </div>
+
+  <div class="setting-group">
+    <span class="setting-label">Prefetch Buffer (sentences)</span>
+    <div class="range-container">
+      <input type="range" id="prefetchBuffer" min="0" max="20" value="5">
+      <span id="prefetchBufferValue">5</span>
+    </div>
+  </div>
+
+  <div class="setting-group">
+    <span class="setting-label">Max Retries on Error</span>
+    <div class="range-container">
+      <input type="range" id="maxRetries" min="0" max="5" value="2">
+      <span id="maxRetriesValue">2</span>
+    </div>
+  </div>
+
+  <div class="setting-group" style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 12px;">
+    <label class="radio-option">
+      <input type="checkbox" id="showDebug">
+      Show LLM Debug Panel
+    </label>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
