@@ -1,54 +1,44 @@
 # YoutubeLLMTranslator
 
-YoutubeLLMTranslator is a powerful Chrome/Edge extension that leverages local or cloud-based Large Language Models (LLMs) to provide real-time translation and deep contextual analysis of YouTube video subtitles. It is designed to offer a seamless and immersive language learning and viewing experience.
+> 注：本项目的所有代码均由 AI 自动生成并构建。
 
-## Features
+YoutubeLLMTranslator 是一款强大的浏览器插件，专为沉浸式的 YouTube 视频观看和外语学习体验而生。它能够直连你本地或云端的大语言模型（LLM），在视频播放时为你提供极其流畅的实时翻译，并在你遇到听不懂的复杂句子时，提供强大的“暂停即解析”功能。
 
-- **Pause & Analyze (Core Feature):** 
-  When you encounter a difficult sentence while watching a video, simply pause the player. The extension will instantly display a deep contextual analysis of the current on-screen subtitle. This analysis includes:
-  - Precise translation of the entire paragraph.
-  - Highlighting of the exact subtitle fragment you paused on.
-  - Extraction and explanation of key vocabulary, idioms, and proper nouns (like names, places, or specific events) based on the video's context.
-  - Zero-latency experience backed by a prefetch buffering mechanism that translates upcoming sentences in the background.
+## 核心功能
 
-- **Real-Time Translation:**
-  Optionally display AI-generated translated subtitles natively on the YouTube player in real-time, synchronized with the video playback.
+- **暂停深度解析 (Pause & Analyze)**
+  这是本插件的杀手锏功能。当你在观看无字幕或生肉视频时，只要遇到任何看不懂或听不清的句子，只需按下空格键暂停视频，插件会瞬间在画面中央弹出一个充满科技感的半透明分析面板。它不仅会给出当前段落极其地道的精准翻译，还会将你此时此刻肉眼正盯着的那半句残句在中文翻译里高亮出来。此外，它还会智能提取当前语境下的重点词汇、俚语甚至是出场人物与地名的百科背景。整个过程凭借强大的后台无感预加载机制，完全零延迟，让你拥有前所未有的丝滑学习体验。
 
-- **Customizable LLM Backend:**
-  Configure the extension to point to any OpenAI-compatible API endpoint. Whether you are running a local LLM via vLLM/Ollama (e.g., a 35B model) or using a cloud provider, you can easily set your API URL, API Key, and Model Name in the extension settings.
+- **实时双语字幕**
+  开启后，插件会在 YouTube 播放器的下方无缝叠加一层极具表现力的字幕，利用你的专属大模型进行毫秒级实时翻译。
 
-- **Robust Error Handling & Auto-Retry:**
-  Built-in mechanisms to handle network fluctuations or API errors, featuring auto-retries and manual retry buttons to ensure you never miss a translation.
+- **高度自由的模型接入配置**
+  彻底告别厂商绑定的焦虑。你可以随时在设置中填入兼容 OpenAI 格式的 API 链接，不管是本地电脑跑着的几十 B 参数的开源推理服务，还是各路云端旗舰模型，一键切换，瞬间生效。
 
-- **Strict Structured Output:**
-  Uses JSON Schema strict mode to guarantee that the LLM always returns perfectly formatted data for stable rendering.
+- **断线与异常自动重试机制**
+  遇到网络波动或模型抽风怎么办？完全不用担心。插件内置了全自动的静默重试机制与贴心的手动重试面板，最大程度保障观影心流不断档。
 
-## Installation
+## 如何安装与体验
 
-1. Open your Chromium-based browser (Chrome, Edge, Brave) and navigate to the extensions page (`chrome://extensions/` or `edge://extensions/`).
-2. Enable **Developer mode** in the top right corner.
-3. Click on **Load unpacked** and select the directory containing this project.
-4. Pin the extension to your toolbar for quick access to settings.
+1. 打开任意基于 Chromium 的浏览器（如 Google Chrome, Edge, Brave 等），在地址栏输入 `chrome://extensions/` 访问扩展管理页面。
+2. 开启右上角的 **开发者模式 (Developer mode)**。
+3. 点击左上角的 **加载已解压的扩展程序 (Load unpacked)**，然后选择你下载并解压的本插件文件夹即可。
+4. 建议将本插件固定在浏览器工具栏，以便随时调出设置面板。
 
-## Configuration
+## 使用指南
 
-Click on the extension icon in your browser toolbar to open the settings panel:
+点击浏览器右上角的扩展图标，你可以非常方便地进行个性化配置：
 
-- **API URL:** Your OpenAI-compatible API endpoint (default: `http://localhost:30000/v1/chat/completions`).
-- **API Key:** Your authentication token (if required by your backend).
-- **Model Name:** The name of the model you wish to use.
-- **Operation Mode:** Choose between "Pause Analysis Only", "Live Translation Only", or "Both".
-- **Live Subtitle Font Size:** Adjust the size of the real-time translated text.
-- **Prefetch Buffer:** Define how many sentences the extension should translate in advance to ensure instant results when pausing.
+- **API URL:** 填入你的大模型接口地址（例如 `http://localhost:30000/v1/chat/completions`）。
+- **API Key:** 你的鉴权密钥。
+- **Model Name:** 你想调用的模型名称。
+- **工作模式:** 根据你的观影习惯，自由切换“仅暂停分析”、“仅实时翻译”或是“全开模式”。
+- **预翻译缓冲 (Prefetch Buffer):** 调整后台偷偷帮你提前翻译的句子数量，数字越大，暂停解析就越快！
 
-## Usage
+设置完毕后，打开任意带有原生字幕流的 YouTube 视频，尽情享受由大语言模型带来的极致观看与学习体验吧！
 
-1. Open a YouTube video that has closed captions (CC) enabled.
-2. The extension will automatically start processing the subtitles based on your operation mode.
-3. **Press the Spacebar to pause the video.** The intelligent analysis panel will immediately pop up, providing translations and vocabulary insights for the current context.
+![功能演示截图](usage.png)
 
-![Usage Screenshot](usage.png)
+## 隐私与数据安全
 
-## Privacy and Security
-
-This extension runs locally in your browser. All communication happens directly between your browser and the API endpoint you configure. No telemetry or tracking data is collected.
+本插件纯本地运行于你的浏览器中，没有任何中间服务器。所有的视频字幕和数据都只在你配置的 API 接口和你之间传输，绝不包含任何隐私窃取或跟踪分析逻辑。
